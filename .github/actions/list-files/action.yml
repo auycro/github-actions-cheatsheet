@@ -1,0 +1,21 @@
+name: Echo Action
+description: "List file in workspace"
+
+inputs:
+  workspace-path:
+    description: "Path of workspace"
+    required: false
+    default: ""
+
+outputs:
+  results-file:
+    description: "Path of results file"
+
+runs:
+  steps:
+      # Unrecognized named-value: 'github'.
+      # ls ${{ github.workspace }}
+    - name: List files in the repository
+      run: |
+        ls -lah .
+

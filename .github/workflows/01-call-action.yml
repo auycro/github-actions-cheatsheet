@@ -15,4 +15,14 @@ jobs:
           ls ${{ github.workspace }}
       
       - name: Call Echo Action
-        uses: ./.github/actions/list-files-action 
+        uses: ./.github/actions/list-files
+
+      - name: Call Echo Action with Composite
+        id: echo-composite
+        uses: ./.github/actions/list-files-with-composite
+        with:
+          who-to-greet: 'Nobody'
+
+      - name: Show output
+        run: echo random-number ${{ steps.echo-composite.outputs.random-number }}
+        shell: bash

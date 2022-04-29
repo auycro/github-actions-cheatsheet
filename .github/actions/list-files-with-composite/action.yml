@@ -1,0 +1,30 @@
+# Try some meta
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+name: List File with Composite
+description: "List file in workspace"
+
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: false
+    default: 'World'
+
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Echo who-to-greet
+      run: echo Hello, ${{ inputs.who-to-greet }}
+      # Unrecognized named-value: 'github'.
+      # ls ${{ github.workspace }}
+    - name: List files in the repository
+      run: |
+        ls -lah .
+
+    - id: random-number-generator
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      shell: bash
