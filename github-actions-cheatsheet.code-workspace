@@ -1,7 +1,7 @@
 {
 	"folders": [
     {
-      "name": "githu actions",
+      "name": "github-actions",
 			"path": "./.github"
 		},
 		{

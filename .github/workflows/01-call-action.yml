@@ -1,0 +1,8 @@
+name: Call Action
+on:
+  push:
+    branches: main
+jobs:
+  Call-Echo-Actions:
+    - name: Call Echo Action
+      uses: ./.github/actions/list-files-action
