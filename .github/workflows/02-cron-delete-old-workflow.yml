@@ -7,11 +7,11 @@ on:
     - cron: "*/5 * * * *"
     
 jobs:
-  comment:
+  Cleanup:
     runs-on: ubuntu-latest
     steps:
       - name: Greeting
-        run: echo "Hello"
+        run: echo "/repos/${{ github.repository }}/actions/runs"
 
       - name: Show Workflow
         run: gh api /repos/${{ github.repository }}/actions/runs
