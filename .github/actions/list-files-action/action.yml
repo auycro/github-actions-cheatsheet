@@ -12,8 +12,8 @@ jobs:
   Echo-Actions:
     runs-on: ubuntu-latest
     steps:
+      # Unrecognized named-value: 'github'.
+      # ls ${{ github.workspace }}
       - name: List files in the repository
         run: |
           ls -lah .
-          # Unrecognized named-value: 'github'.
-          # ls ${{ github.workspace }}
