@@ -4,5 +4,7 @@ on:
     branches: main
 jobs:
   Call-Echo-Actions:
-    - name: Call Echo Action
-      uses: ./.github/actions/list-files-action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Echo Action
+        uses: ./.github/actions/list-files-action
