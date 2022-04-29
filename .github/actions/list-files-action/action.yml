@@ -1,6 +1,6 @@
-name: Echo Action
-
+# Try some meta
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+name: Echo Action
 description: "List file in workspace"
 
 inputs:
