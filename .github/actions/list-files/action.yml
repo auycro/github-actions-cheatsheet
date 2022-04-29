@@ -16,6 +16,7 @@ runs:
       # Unrecognized named-value: 'github'.
       # ls ${{ github.workspace }}
     - name: List files in the repository
+      shell: bash
       run: |
         ls -lah .
-
+      
