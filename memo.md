@@ -6,7 +6,7 @@ https://docs.github.com/en/actions/quickstart
 
 demo.yml
 
-```
+```yaml
 name: GitHub Actions Demo
 on:
   push:
@@ -36,6 +36,27 @@ jobs:
 3. Jobs
 4. Actions
 5. Runners
+
+## Workflows
+
+### Triggers
+
+https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+
+
+```yaml
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '30 5,17 * * *'
+```
+
+```yaml
+on:
+  watch:
+    types: [started]
+```
+
 
 ## Actions
 

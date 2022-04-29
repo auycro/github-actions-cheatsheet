@@ -14,6 +14,6 @@ jobs:
         run: echo "/repos/${{ github.repository }}/actions/runs"
 
       - name: Show Workflow
-        run: gh api /repos/${{ github.repository }}/actions/runs
+        run: gh api /repos/${{ github.repository }}/actions/runs | wc -l
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
