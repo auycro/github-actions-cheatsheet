@@ -1,10 +1,11 @@
+# https://docs.github.com/en/rest/actions/workflow-runs#list-workflow-runs-for-a-repository
 name: Cleanup Old Workflow
 
 on:
   workflow_dispatch:
   
   schedule: 
-    - cron: "*/5 * * * *"
+    - cron: "0 0 * * *"
     
 jobs:
   Cleanup:
@@ -24,6 +25,6 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Delete Workflow ID
-        run: gh api /repos/${{ github.repository }}/actions/runs |  jq '.workflow_runs[] | .id' | sort | head -n -15 | xargs -I{} gh api -X DELETE /repos/${{ github.repository }}/actions/runs/{}
+        run: gh api /repos/${{ github.repository }}/actions/runs |  jq '.workflow_runs[] | .id' | sort | head -n -20 | xargs -I{} gh api -X DELETE /repos/${{ github.repository }}/actions/runs/{}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
