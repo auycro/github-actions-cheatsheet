@@ -2,12 +2,13 @@ name: List Files
 description: "List file in workspace"
 
 runs:
-  usings: "composite"
+  using: "composite"
   steps:
     - name: List files in the repository
-      shell: bash
+    
       run: |
         ls -lah .
+      shell: bash
 
 # memo: Error
 # Unrecognized named-value: 'github'.

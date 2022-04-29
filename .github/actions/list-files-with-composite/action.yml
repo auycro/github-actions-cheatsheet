@@ -24,7 +24,7 @@ runs:
       # ls ${{ github.workspace }}
     - name: List files in the repository
       run: |
-        ls -lah .
+        ls -lah ${{ github.workspace }}
       shell: bash
 
     - id: random-number-generator

@@ -8,14 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-#      - run: ls .
+      - run: ls .
 
-#      - name: List files in the repository
-#        run: |
-#          ls ${{ github.workspace }}
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       
-#      - name: Call Echo Action
-#        uses: ./.github/actions/list-files
+      - name: Call Echo Action
+        uses: ./.github/actions/list-files
 
       - name: Call Echo Action with Composite
         id: echo-composite
@@ -23,6 +23,6 @@ jobs:
         with:
           who-to-greet: 'Nobody'
 
-#      - name: Show output
-#        run: echo random-number ${{ steps.echo-composite.outputs.random-number }}
-#        shell: bash
+      - name: Show output
+        run: echo random-number ${{ steps.echo-composite.outputs.random-number }}
+        shell: bash
