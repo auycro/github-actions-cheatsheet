@@ -1,0 +1,25 @@
+{
+	"folders": [
+    {
+      "name": "githu actions",
+			"path": "./.github"
+		},
+		{
+      "name": "csharp",
+			"path": "./csharp"
+		},
+    {
+      "name": "python",
+			"path": "./python"
+		},
+    {
+      "name": "javascript",
+			"path": "./javascript"
+		},
+    {
+      "name": "go",
+			"path": "./go"
+		},
+  ],
+  "settings": {}
+}
