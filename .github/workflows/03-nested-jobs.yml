@@ -34,6 +34,6 @@ jobs:
         env:
           Steps_Env: "Step-env"
       
-      - run: echo "jobs.FirstJob.strategy ${{ jobs.FirstJob.strategy }}"
-      - run: echo "jobs.SecondJob.strategy ${{ jobs.SecondJob.strategy }}"
+      - run: echo "jobs.FirstJob.name ${{ jobs.FirstJob.name }}"
+      - run: echo "jobs.SecondJob.environment ${{ jobs.SecondJob.environment }}"
       
