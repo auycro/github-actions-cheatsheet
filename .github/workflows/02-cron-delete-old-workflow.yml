@@ -1,7 +1,7 @@
-name: Report remaining open issues
+name: Cleanup Old Workflow
 on: 
   schedule: 
-    - cron: '*/5 * * * *'
+    - cron: '* * * * *'
 jobs:
   comment:
     runs-on: ubuntu-latest
@@ -9,4 +9,3 @@ jobs:
       - run: gh api ${{ github.repository }}/actions/runs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
