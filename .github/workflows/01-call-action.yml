@@ -7,9 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - run: ls .
+      
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      
       - name: Call Echo Action
-        uses: .github/actions/list-files-action
+        uses: ./.github/actions/list-files-action 
