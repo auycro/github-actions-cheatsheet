@@ -2,10 +2,12 @@ name: List Files
 description: "List file in workspace"
 runs:
   steps:
-    # Unrecognized named-value: 'github'.
-    # ls ${{ github.workspace }}
-    - name: List files in the repository
+    - id: list-files
+      name: List files in the repository
       shell: bash
       run: |
         ls -lah .
 
+# memo: Error
+# Unrecognized named-value: 'github'.
+# ls ${{ github.workspace }}
