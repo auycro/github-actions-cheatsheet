@@ -1,11 +1,15 @@
 name: Cleanup Old Workflow
 on: 
   schedule: 
-    - cron: '* * * * *'
+    - cron: '5 * * * *'
 jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - run: gh api ${{ github.repository }}/actions/runs
+      - name: Greeting
+        run: echo "Hello"
+
+      - name: Show Workflow
+        run: gh api ${{ github.repository }}/actions/runs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
