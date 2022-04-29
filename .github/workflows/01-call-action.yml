@@ -13,16 +13,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      
-      - name: Call Echo Action
-        uses: ./.github/actions/list-files
 
-      - name: Call Echo Action with Composite
-        id: echo-composite
-        uses: ./.github/actions/list-files-with-composite
+      - name: Call List Files Action
+        id: list-file
+        uses: ./.github/actions/list-files
         with:
           who-to-greet: 'Nobody'
 
       - name: Show output
-        run: echo random-number ${{ steps.echo-composite.outputs.random-number }}
+        run: echo random-number ${{ steps.list-file.outputs.random-number }}
         shell: bash

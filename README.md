@@ -36,3 +36,13 @@ jobs:
 3. Jobs
 4. Actions
 5. Runners
+
+
+## Actions
+
+### Custom Actions
+
+- Docker container action
+- JavaScript action
+- Composite action
+
