@@ -1,19 +1,31 @@
 name: Echo Action
+
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
 description: "List file in workspace"
+
 inputs:
   workspace-path:
     description: "Path of workspace"
     required: false
     default: ""
+
 outputs:
   results-file:
     description: "Path of results file"
-jobs:
+
+runs:
   Echo-Actions:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
     steps:
       # Unrecognized named-value: 'github'.
       # ls ${{ github.workspace }}
       - name: List files in the repository
+        run: |
+          ls -lah .
+  
+  Using-Composite:
+    using: "composite"
+    steps:
+      - name: List files in the repository with composite
         run: |
           ls -lah .
