@@ -1,9 +1,9 @@
 name: List Files
 description: "List file in workspace"
 runs:
+  usings: "composite"
   steps:
-    - id: list-files
-      name: List files in the repository
+    - name: List files in the repository
       shell: bash
       run: |
         ls -lah .
