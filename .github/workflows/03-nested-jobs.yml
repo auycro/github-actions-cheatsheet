@@ -1,7 +1,13 @@
 name: Nested jobs
 
 on:
+  push:
+    branches: main
+
   workflow_dispatch:
+
+env:
+  GLOBAL_ENV: "Global Environment"
 
 jobs:
   FirstJob:
@@ -15,3 +21,19 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+
+  LastJob:
+    env:
+      LastJob_env: "LastJob Environment"
+    if: ${{ always() }}
+    needs: [FirstJob, SecondJob]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Environment
+        run: echo "global=$GLOBAL_ENV, job=$LastJob_env, step=$Steps_Env"
+        env:
+          Steps_Env: "Step-env"
+      
+      - run: echo "jobs.FirstJob.strategy ${{ jobs.FirstJob.strategy }}"
+      - run: echo "jobs.SecondJob.strategy ${{ jobs.SecondJob.strategy }}"
+      

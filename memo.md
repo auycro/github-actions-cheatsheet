@@ -37,12 +37,13 @@ jobs:
 4. Actions
 5. Runners
 
-## Workflows
+### Workflows
 
-### Triggers
+#### Triggers
 
 https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 
+- cron
 
 ```yaml
 on:
@@ -51,17 +52,35 @@ on:
     - cron:  '30 5,17 * * *'
 ```
 
+- on-demand
+
 ```yaml
 on:
   watch:
     types: [started]
 ```
 
+### Events
 
-## Actions
+tbd
 
-### Custom Actions
+### Jobs
+
+tbd
+
+### Actions
+
+#### Custom Actions
 
 - Docker container action
 - JavaScript action
 - Composite action
+
+### Runners
+
+tbd
+
+## Monitor & troubleshoot
+
+tbd
+
