@@ -7,5 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: ls .
       - name: Call Echo Action
-        uses: ./.github/actions/list-files-action
+        uses: .github/actions/list-files-action
