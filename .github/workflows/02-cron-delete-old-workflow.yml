@@ -27,4 +27,4 @@ jobs:
       - name: Delete Workflow ID
         run: gh api /repos/${{ github.repository }}/actions/runs |  jq '.workflow_runs[] | .id' | sort | head -n -20 | xargs -I{} gh api -X DELETE /repos/${{ github.repository }}/actions/runs/{}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_DELETE_TOKEN }}
