@@ -46,7 +46,7 @@ jobs:
       - run: echo "🎉 ${{ matrix.os }}"
       - run: echo "🐧 ${{ matrix.version }}"      
       
-  DeployJob:
+  DeployDevJob:
     needs: [TestMatrixJob]
     strategy:
       max-parallel: 2
@@ -61,8 +61,38 @@ jobs:
           - site: "ap-northeast-1"
             datacenter: "site-c"
             url: "jp.example.com"
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 ${{ matrix.site }}"
       - run: echo "🐧 ${{ matrix.datacenter }}"    
       - run: echo "🗼 ${{ matrix.url }}"    
+
+  TestDevJob:
+    needs: [DeployDevJob]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"    
+
+  DeployProJob:
+    environment: 'SuperProduction'
+    needs: [DeployDevJob]
+    strategy:
+      max-parallel: 2
+      matrix:
+        include:
+          - site: "us-east1-prod"
+            datacenter: "site-a-prod"
+            url: "us1-prod.example.com"
+          - site: "us-east2-prod"
+            datacenter: "site-b-prod"
+            url: "us2-prod.example.com"
+          - site: "ap-northeast-1-prod"
+            datacenter: "site-c-prod"
+            url: "jp-prod.example.com"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 ${{ matrix.site }}"
+      - run: echo "🐧 ${{ matrix.datacenter }}"    
+      - run: echo "🗼 ${{ matrix.url }}"  
+

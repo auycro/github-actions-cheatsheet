@@ -66,7 +66,32 @@ tbd
 
 ### Jobs
 
-tbd
+#### using Matrix
+
+03-nested-jobs.yml
+
+```
+  DeployJob:
+    needs: [TestMatrixJob]
+    strategy:
+      max-parallel: 2
+      matrix:
+        include:
+          - site: "us-east1"
+            datacenter: "site-a"
+            url: "us1.example.com"
+          - site: "us-east2"
+            datacenter: "site-b"
+            url: "us2.example.com"
+          - site: "ap-northeast-1"
+            datacenter: "site-c"
+            url: "jp.example.com"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 ${{ matrix.site }}"
+      - run: echo "🐧 ${{ matrix.datacenter }}"    
+      - run: echo "🗼 ${{ matrix.url }}"  
+```
 
 ### Actions
 
@@ -77,6 +102,40 @@ tbd
 - Composite action
 
 ### Runners
+
+tbd
+
+## Enviroment
+
+### Setting up Enviroment
+
+[deployment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)
+
+```
+  DeployProJob:
+    environment: 'SuperProduction'
+    needs: [DeployDevJob]
+    strategy:
+      max-parallel: 2
+      matrix:
+        include:
+          - site: "us-east1-prod"
+            datacenter: "site-a-prod"
+            url: "us1-prod.example.com"
+          - site: "us-east2-prod"
+            datacenter: "site-b-prod"
+            url: "us2-prod.example.com"
+          - site: "ap-northeast-1-prod"
+            datacenter: "site-c-prod"
+            url: "jp-prod.example.com"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 ${{ matrix.site }}"
+      - run: echo "🐧 ${{ matrix.datacenter }}"    
+      - run: echo "🗼 ${{ matrix.url }}"  
+```
+
+### Review deployment
 
 tbd
 
