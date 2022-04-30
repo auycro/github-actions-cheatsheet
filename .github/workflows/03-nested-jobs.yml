@@ -22,7 +22,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
 
-  LastJob:
+  PostBuildJob:
     env:
       LastJob_env: "LastJob Environment"
     if: ${{ always() }}
@@ -33,5 +33,15 @@ jobs:
         run: echo "global=$GLOBAL_ENV, job=$LastJob_env, step=$Steps_Env"
         env:
           Steps_Env: "Step-env"
-      
+            
+  DeployMatrixJob:
+    needs: [PostBuildJob]
+    strategy:
+        matrix:
+          version: [10, 12, 14]
+          os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"      
       
