@@ -61,7 +61,7 @@ jobs:
           - site: "ap-northeast-1"
             datacenter: "site-c"
             url: "jp.example.com"
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 ${{ matrix.site }}"
       - run: echo "🐧 ${{ matrix.datacenter }}"    
