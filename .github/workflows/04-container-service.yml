@@ -1,0 +1,41 @@
+# https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers
+
+name: Container Service Example
+on:
+  push:
+    branches: main
+
+  workflow_dispatch:
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: node:10.18-jessie
+
+    services:
+      mysql:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: password
+        options: >-
+          --health-cmd 'mysqladmin ping -h localhost'
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+            cd ./javascript
+            yarn install
+
+      - name:  Connect to PostgreSQL
+        run: |
+            cd ./javascript
+            yarn serve
+        #env:
+        #  MYSQL_ROOT_PASSWORD: postgres
+        #  MYSQL_PORT: 3306
