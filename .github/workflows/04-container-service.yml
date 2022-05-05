@@ -28,8 +28,8 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Show Docker containers
-        run: docker ps -a
+      # - name: Show Docker containers
+      #  run: docker ps -a
 
       - name: Check out repository code
         uses: actions/checkout@v3
