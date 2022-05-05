@@ -41,7 +41,7 @@ jobs:
 
       - name: Connect to MySQL
         env:
-          MYSQL_HOST: localhost
+          MYSQL_HOST: mysql-db
           MYSQL_PORT: 3306
           MYSQL_USER: sample
           MYSQL_PASSWORD: sample_password
