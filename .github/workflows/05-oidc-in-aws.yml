@@ -1,0 +1,30 @@
+# https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html
+# https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+name: OIDC in AWS
+on:  
+  workflow_dispatch:
+
+env:
+  BUCKET_NAME: "auycro-test-upload"
+  
+jobs:
+  Upload-S3:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: sleep 5 # there's still a race condition for now
+
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::632830983795:role/test-github-actions
+          role-session-name: GrantGithubActionsAccess
+
+      - name:  Copy README.md to s3
+        run: |
+          aws s3 cp ./README.md s3://${{ env.BUCKET_NAME }}/
