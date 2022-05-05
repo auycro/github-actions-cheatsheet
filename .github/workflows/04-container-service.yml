@@ -10,22 +10,27 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-    container: node:10.18-jessie
-
+    #container: node:10.18-jessie
     services:
       mysql-db:
         image: mysql
         env:
           MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: sample_db
+          MYSQL_USER: sample
+          MYSQL_PASSWORD: sample_password
         ports:
           - 3306:3306
-        # options: >-
-        #   --health-cmd 'mysqladmin ping -h localhost'
+        options: >-
+          --health-cmd 'mysqladmin ping'
         #   --health-interval 10s
         #   --health-timeout 5s
         #   --health-retries 5
 
     steps:
+      - name: Show Docker containers
+        run: docker ps -a
+
       - name: Check out repository code
         uses: actions/checkout@v3
 
@@ -38,9 +43,9 @@ jobs:
         env:
           MYSQL_HOST: "localhost"
           MYSQL_PORT: 3306
-          MYSQL_USER: "root"
-          MYSQL_PASSWORD: "password"
-          MYSQL_DB: "mysql"
+          MYSQL_USER: sample
+          MYSQL_PASSWORD: sample_password
+          MYSQL_DB: sample_db
         run: |
             cd ./javascript
             yarn serve
