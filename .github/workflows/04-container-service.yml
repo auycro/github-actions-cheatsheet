@@ -17,6 +17,8 @@ jobs:
         image: mysql
         env:
           MYSQL_ROOT_PASSWORD: password
+        ports:
+          - 3306:3306
         # options: >-
         #   --health-cmd 'mysqladmin ping -h localhost'
         #   --health-interval 10s
@@ -40,5 +42,3 @@ jobs:
         #  MYSQL_ROOT_PASSWORD: postgres
         #  MYSQL_PORT: 3306
 
-      - name: Check Docker
-        run: docker ps -a

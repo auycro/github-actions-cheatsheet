@@ -1,5 +1,6 @@
 # https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html
 # https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+# https://github.com/auycro/terraform-learning
 name: OIDC in AWS
 on:  
   workflow_dispatch:

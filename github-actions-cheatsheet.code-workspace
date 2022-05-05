@@ -1,25 +1,25 @@
 {
-	"folders": [
+  "folders": [
     {
       "name": ".github",
-			"path": "./.github"
-		},
-		{
+      "path": "./.github"
+    },
+    {
       "name": "csharp",
-			"path": "./csharp"
-		},
+      "path": "./csharp"
+    },
     {
       "name": "python",
-			"path": "./python"
-		},
+      "path": "./python"
+    },
     {
       "name": "javascript",
-			"path": "./javascript"
-		},
+      "path": "./javascript"
+    },
     {
       "name": "go",
-			"path": "./go"
-		},
+      "path": "./go"
+    },
   ],
   "settings": {}
 }
